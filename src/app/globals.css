@@ -179,7 +179,7 @@ body {
   border-color:#25569b; background:#25569b; box-shadow:0 6px 15px rgba(50,103,177,.16); transform:translateY(-1px);
 }
 .site-footer { max-width:1200px; padding:0 28px; font-weight:600; }
-.site-footer-meta { border-top:1px solid var(--line); }
+.site-footer-meta { flex-wrap:wrap; border-top:1px solid var(--line); }
 .site-footer a:hover { color:var(--orange); }
 .home-shell,.page-shell { max-width:1200px; padding-left:28px; padding-right:28px; }
 .home-hero { padding:78px 0 52px; }
@@ -294,8 +294,9 @@ body {
   .home-copy h1 { font-size:clamp(52px,8vw,70px); }
 }
 @media(max-width:600px) {
-  .site-header-inner { padding:14px 18px; }
-  .brand { font-size:20px; }
+  .site-header-inner { padding:14px 18px; gap:10px; }
+  .brand { font-size:clamp(14px,4.5vw,20px); letter-spacing:-.025em; }
+  .brand::before { width:14px; margin-right:6px; flex-shrink:0; }
   .site-nav a { min-height:37px; padding:8px 12px; font-size:12px; }
   .home-shell,.page-shell,.admin-shell { padding-left:18px; padding-right:18px; }
   .home-hero { padding:52px 0 38px; }

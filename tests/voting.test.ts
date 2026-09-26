@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { NextRequest } from "next/server";
 
-const dir = mkdtempSync(join(tmpdir(), "yi-piao-zhi-jian-test-"));
+const dir = mkdtempSync(join(tmpdir(), "authright-voting-test-"));
 process.env.SQLITE_PATH = join(dir, "test.sqlite");
 process.env.APP_ORIGIN = "http://localhost:3000";
 process.env.SESSION_SECRET = "a".repeat(64);
