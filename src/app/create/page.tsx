@@ -47,6 +47,7 @@ export default function CreatePage() {
     setError("");
     if (loading) return;
     if (!title.trim()) return setError("请填写投票标题");
+    if (description.trim().length > 80) return setError("补充说明最多 80 字");
     if (options.length < 2 || options.some((value) => !value.trim())) return setError("请填写至少两个选项");
     const start = scheduled ? new Date(startsAt).getTime() : Date.now();
     const end = new Date(endsAt).getTime();
@@ -79,7 +80,7 @@ export default function CreatePage() {
       <div className="form-grid">
         <section className="form-section"><h2>01 / 你的问题</h2>
           <div className="field"><label htmlFor="poll-title">投票标题 *</label><input id="poll-title" maxLength={100} required value={title} onChange={(e) => setTitle(e.target.value)} placeholder="例如：周五聚餐，吃什么？" /></div>
-          <div className="field"><label htmlFor="poll-description">补充说明</label><textarea id="poll-description" maxLength={1000} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="给大家一点背景信息，也可以留空。" /></div>
+          <div className="field"><label htmlFor="poll-description">补充说明（最多 80 字）</label><textarea id="poll-description" maxLength={80} aria-describedby="poll-description-count" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="给大家一点背景信息，也可以留空。" /><p id="poll-description-count" className="helper">{description.length} / 80 字</p></div>
         </section>
         <section className="form-section"><h2>02 / 可以选择什么？</h2>
           {options.map((option, index) => <div className="option-entry" key={index}>

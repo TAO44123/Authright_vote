@@ -68,6 +68,6 @@ export default function PollPage() {
       {showResults && stats && <><div aria-live="polite">{ownOptionId && <div className="success-box">✓ 已收到你的一票。{status === "ended" ? "下面是最终结果。" : "下面是当前结果。"}</div>}</div><ResultBars stats={stats} ownOptionId={ownOptionId} final={status === "ended"} />{updatedAt && status === "live" && <p className="helper">最近更新：{new Date(updatedAt).toLocaleTimeString("zh-CN")}</p>}</>}
       {status === "ended" && !stats && <p className="helper">正在读取最终结果…</p>}
     </article>
-    <ShareTools pollId={id} />
+    <ShareTools pollId={id} title={poll.title} description={poll.description} />
   </div>;
 }

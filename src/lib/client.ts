@@ -68,6 +68,10 @@ export function message(error: unknown) {
   return error instanceof Error ? error.message : "操作失败，请稍后再试";
 }
 
+export function formatPollShare(poll: Pick<PollInfo, "title" | "description">, url: string) {
+  return [poll.title.trim(), poll.description.trim(), url].filter(Boolean).join("\n");
+}
+
 export async function copyText(text: string) {
   if (navigator.clipboard?.writeText) {
     try { await navigator.clipboard.writeText(text); return; } catch { /* 在局域网 HTTP 页面回退到选择复制。 */ }

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const createPollSchema = z.object({
   title: z.string().trim().min(1).max(100),
-  description: z.string().trim().max(1000).default(""),
+  description: z.string().trim().max(80, "补充说明最多 80 字").default(""),
   options: z.array(z.string().trim().min(1).max(100)).min(2).max(8),
   startsAt: z.number().int().positive(),
   endsAt: z.number().int().positive(),

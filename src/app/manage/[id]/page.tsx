@@ -52,7 +52,7 @@ export default function ManagePage() {
       <div className="manage-section"><h2>投票趋势</h2>{trend.length ? <><div className="trend" role="img" aria-label={`最近 ${trend.length} 个时段的投票趋势`}>
         {trend.map((item) => <div className="trend-bar" key={item.at} style={{ height: `${Math.max(7, item.votes / max * 100)}%` }} title={`${formatDate(item.at)}：${item.votes} 票`} />)}
       </div><p className="trend-caption">每柱表示一个时间段收到的票数；把鼠标停在柱上可查看时间。</p></> : <p className="helper">目前还没有投票记录。</p>}</div>
-      <div className="manage-section"><h2>分享给大家</h2><p className="helper">公开投票链接可以分享；请保存创建时获得的私密管理链接。</p><ShareTools pollId={id} /></div>
+      <div className="manage-section"><h2>分享给大家</h2><p className="helper">公开投票链接可以分享；请保存创建时获得的私密管理链接。</p><ShareTools pollId={id} title={poll.title} description={poll.description} /></div>
       {error && <div className="error-box" role="alert">{error}</div>}
       {poll.status !== "ended" && <div className="manage-section" style={{ borderTop: "2px solid var(--ink)", paddingTop: 23 }}><h2>管理活动</h2><button type="button" className="danger-button" disabled={closing} onClick={close}>{closing ? "正在结束…" : "提前结束投票"}</button><p className="helper">结束后无法重新开放，最终结果会对所有访问者公开。</p></div>}
     </div>
