@@ -47,7 +47,7 @@ export function AdminDashboard() {
         {data.items.map((item) => <tr key={item.id}><td><Link href={`/admin/polls/${item.id}`}>{item.title}</Link><div className="helper">{item.id}</div></td><td><span className={`status-badge ${item.status}`}>{item.status === "live" ? "进行中" : item.status === "upcoming" ? "未开始" : "已结束"}</span></td><td>{item.votes}</td><td>{formatDate(item.endsAt)}</td><td>{item.archivedAt ? "已归档" : "正常"}</td></tr>)}
         {data.items.length === 0 && <tr><td colSpan={5}>暂无符合条件的投票。</td></tr>}
       </tbody></table></div>
-      <div className="pagination"><button type="button" disabled={page <= 1} onClick={() => setPage(page - 1)}>← 上一页</button><span>第 {data.page} / {data.pages} 页 · 共 {data.total} 场</span><button type="button" disabled={page >= data.pages} onClick={() => setPage(page + 1)}>下一页 →</button></div>
+      <div className="pagination"><button type="button" disabled={page <= 1} onClick={() => setPage(page - 1)}>上一页</button><span>第 {data.page} / {data.pages} 页 · 共 {data.total} 场</span><button type="button" disabled={page >= data.pages} onClick={() => setPage(page + 1)}>下一页</button></div>
     </>}
   </div>;
 }

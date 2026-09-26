@@ -42,17 +42,20 @@ a { color:inherit; }
 .page-head h1 { font-size:clamp(38px,5vw,65px); letter-spacing:-.08em; line-height:1.1; margin:17px 0 12px; font-weight:950; }
 .page-head p { font-weight:600; color:var(--muted); line-height:1.6; margin:0; }
 .paper-panel { border:2px solid var(--ink); background:var(--white); box-shadow:7px 7px 0 var(--ink); padding:29px; }
-.form-grid { display:grid; gap:27px; }
+.form-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:27px; }
 .form-section { border-top:2px solid var(--ink); padding-top:17px; }
 .form-section:first-child { border-top:0; padding-top:0; }
 .form-section h2 { margin:0 0 17px; font-size:22px; letter-spacing:-.04em; }
-.field { display:grid; gap:8px; margin-bottom:17px; }
+.field { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; gap:8px; margin-bottom:17px; }
 .field label,.field-label { font-weight:800; font-size:14px; }
 .field input,.field textarea,.field select,.search-field { width:100%; background:var(--paper); border:2px solid var(--ink); padding:13px 14px; border-radius:0; color:var(--ink); min-height:48px; }
+/* Keep native date controls within their grid track, including iOS Safari. */
+.field input[type="datetime-local"] { display:block; min-width:0; max-width:100%; -webkit-appearance:none; appearance:none; }
+.field input[type="datetime-local"]::-webkit-date-and-time-value { min-width:0; text-align:left; }
 .field textarea { resize:vertical; min-height:100px; }
 .field input::placeholder,.field textarea::placeholder { color:#777eae; }
 .helper { color:var(--muted); font-size:12px; line-height:1.5; }
-.inline-fields { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.inline-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
 .option-entry { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
 .option-entry .option-number { border:2px solid var(--ink); min-width:40px; min-height:46px; display:grid; place-items:center; font-weight:900; background:var(--yellow); }
 .option-entry input { flex:1; min-width:0; background:var(--paper); border:2px solid var(--ink); padding:11px 13px; min-height:46px; }
@@ -138,7 +141,7 @@ a { color:inherit; }
 .spinner { width:26px; height:26px; border:3px solid #bfc2e7; border-top-color:var(--orange); border-radius:50%; animation:spin .7s linear infinite; margin:40px auto; }
 @keyframes spin { to { transform:rotate(360deg); } }
 @media(max-width:800px) { .home-hero { padding:64px 0 50px; } .home-copy h1 { font-size:clamp(53px,11vw,85px); } .home-steps { gap:16px; } }
-@media(max-width:600px) { .site-header-inner { padding:13px 17px; } .brand { font-size:22px; } .site-nav a { padding:8px 10px; font-size:12px; box-shadow:3px 3px 0 var(--ink); } .home-shell,.page-shell,.admin-shell { padding-left:18px; padding-right:18px; } .home-hero { padding:58px 0 42px; } .home-copy h1 { font-size:clamp(45px,10vw,62px); } .hero-text { font-size:15px; } .hero-cta { width:100%; } .home-steps { grid-template-columns:1fr; gap:10px; } .page-shell { padding-top:37px; } .paper-panel,.poll-card { padding:20px; } .poll-layout { padding:30px 17px 55px; } .poll-title { font-size:clamp(37px,11vw,56px); } .inline-fields,.manage-grid { grid-template-columns:1fr; } .metric { min-height:86px; } .metric b { font-size:29px; } .site-footer { padding-left:18px; padding-right:18px; } }
+@media(max-width:600px) { .site-header-inner { padding:13px 17px; } .brand { font-size:22px; } .site-nav a { padding:8px 10px; font-size:12px; box-shadow:3px 3px 0 var(--ink); } .home-shell,.page-shell,.admin-shell { padding-left:18px; padding-right:18px; } .home-hero { padding:58px 0 42px; } .home-copy h1 { font-size:clamp(45px,10vw,62px); } .hero-text { font-size:15px; } .hero-cta { width:100%; } .home-steps { grid-template-columns:1fr; gap:10px; } .page-shell { padding-top:37px; } .paper-panel,.poll-card { padding:20px; } .poll-layout { padding:30px 17px 55px; } .poll-title { font-size:clamp(37px,11vw,56px); } .inline-fields,.manage-grid { grid-template-columns:minmax(0,1fr); } .metric { min-height:86px; } .metric b { font-size:29px; } .site-footer { padding-left:18px; padding-right:18px; } }
 @media(max-width:600px) { .poll-ended-stamp { top:80px; right:12px; padding:6px 10px; font-size:32px; border-width:3px; transform:rotate(-8deg); } }
 @media(max-width:360px) { .brand { font-size:19px; } .poll-top .issue { display:none; } .home-copy h1 { font-size:49px; } .option-entry { gap:7px; } .option-entry .small-action { padding:6px 7px; } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
@@ -310,7 +313,7 @@ body {
   .poll-layout { padding:28px 17px 55px; }
   .poll-title { font-size:clamp(36px,9.5vw,52px); }
   .poll-ended-stamp { top:82px; right:17px; font-size:13px; }
-  .inline-fields,.manage-grid { grid-template-columns:1fr; }
+  .inline-fields,.manage-grid { grid-template-columns:minmax(0,1fr); }
   .metric { min-height:85px; }
   .metric b { font-size:28px; }
   .site-footer { padding:0 18px; }

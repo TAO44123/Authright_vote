@@ -23,6 +23,6 @@ export default function AuditPage() {
     {data && <><div className="table-wrap"><table className="data-table"><thead><tr><th>时间</th><th>活动</th><th>操作</th><th>执行者</th></tr></thead><tbody>
       {data.items.map((entry, index) => <tr key={`${entry.createdAt}-${index}`}><td>{formatDate(entry.createdAt)}</td><td><Link href={`/admin/polls/${entry.pollId}`}>{entry.title}</Link><div className="helper">{entry.pollId}</div></td><td>{actionNames[entry.action] || entry.action}</td><td>{entry.actorKind === "admin" ? "管理员" : "发起者"}</td></tr>)}
       {data.items.length === 0 && <tr><td colSpan={4}>暂无操作记录。</td></tr>}
-    </tbody></table></div><div className="pagination"><button disabled={page <= 1} onClick={() => setPage(page - 1)}>← 上一页</button><span>第 {data.page} / {data.pages} 页 · 共 {data.total} 条</span><button disabled={page >= data.pages} onClick={() => setPage(page + 1)}>下一页 →</button></div></>}
+    </tbody></table></div><div className="pagination"><button disabled={page <= 1} onClick={() => setPage(page - 1)}>上一页</button><span>第 {data.page} / {data.pages} 页 · 共 {data.total} 条</span><button disabled={page >= data.pages} onClick={() => setPage(page + 1)}>下一页</button></div></>}
   </div>;
 }

@@ -101,7 +101,7 @@ export default function CreatePage() {
       </div>
       <div className="notice">发布后会生成两条链接：投票链接分享给大家；“我的结果链接”由你自己保存，可随时查看统计。</div>
       {error && <div className="error-box" role="alert">{error}</div>}
-      <div className="form-actions"><button type="submit" className="button button-primary" disabled={loading}>{loading ? "正在发布…" : "发布投票 ↗"}</button><span className="helper">发布后标题、选项和时间将锁定</span></div>
+      <div className="form-actions"><button type="submit" className="button button-primary" disabled={loading}>{loading ? "正在发布…" : "发布投票"}</button><span className="helper">发布后标题、选项和时间将锁定</span></div>
     </form>
   </div>;
 }

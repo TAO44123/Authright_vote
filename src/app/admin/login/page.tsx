@@ -22,7 +22,7 @@ export default function AdminLoginPage() {
       <div className="field"><label htmlFor="admin-username">用户名</label><input id="admin-username" value={username} onChange={(event) => setUsername(event.target.value)} autoComplete="username" required /></div>
       <div className="field"><label htmlFor="admin-password">密码</label><input id="admin-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" required /></div>
       {error && <div className="error-box" role="alert">{error}</div>}
-      <button className="button button-primary" disabled={busy} type="submit">{busy ? "登录中…" : "进入后台 ↗"}</button>
+      <button className="button button-primary" disabled={busy} type="submit">{busy ? "登录中…" : "进入后台"}</button>
     </form>
   </div>;
 }

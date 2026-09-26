@@ -38,7 +38,7 @@ export default function CreatedPage() {
       </div>
       {copied === "复制失败，请手动复制" && <p role="alert">{copied}</p>}
       <p className="helper">活动编号：{id}。编号用于管理员查找活动，不代替私密管理链接。</p>
-      <div className="form-actions"><Link className="button button-secondary" href={`/p/${id}`}>查看投票页 ↗</Link>{privateUrl && <Link className="button button-primary" href={`/manage/${id}#key=${token}`}>查看我的结果 ↗</Link>}</div>
+      <div className="form-actions"><Link className="button button-secondary" href={`/p/${id}`}>查看投票页</Link>{privateUrl && <Link className="button button-primary" href={`/manage/${id}#key=${token}`}>查看我的结果</Link>}</div>
     </div>
   </div>;
 }
