@@ -256,6 +256,7 @@ body {
 .result-item.own .result-fill { background:var(--orange); }
 .result-footer { border-top:1px solid var(--line); color:var(--muted); font-size:12px; font-weight:650; }
 .share-strip { margin-top:24px; }
+.link-panel > .share-strip { margin-top:0; }
 .share-strip button { box-shadow:none; }
 .qr-box { border:1px solid var(--line); border-radius:7px; }
 .link-panel { border:1px solid var(--line); border-radius:8px; background:#fbfdff; }

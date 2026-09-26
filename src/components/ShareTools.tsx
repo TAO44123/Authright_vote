@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { copyText, formatPollShare, PollInfo, publicOrigin } from "@/lib/client";
 
-export function ShareTools({ pollId, title, description }: { pollId: string } & Pick<PollInfo, "title" | "description">) {
-  const [showQr, setShowQr] = useState(false);
+export function ShareTools({ pollId, title, description, defaultShowQr = false }: { pollId: string; defaultShowQr?: boolean } & Pick<PollInfo, "title" | "description">) {
+  const [showQr, setShowQr] = useState(defaultShowQr);
   const [copied, setCopied] = useState(false);
   const [origin, setOrigin] = useState("");
   const [error, setError] = useState("");
