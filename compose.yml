@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: ${ENV_FILE:-.env.production}
+    environment:
+      SQLITE_PATH: /app/data/voting.sqlite
+      BACKUP_DIR: /app/backups
+    volumes:
+      - ./data:/app/data
+      - ./backups:/app/backups
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    env_file: ${ENV_FILE:-.env.production}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
